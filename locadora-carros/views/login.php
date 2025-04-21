@@ -12,7 +12,7 @@
         <p style="color: red;"><?php echo $erro; ?></p>
     <?php endif; ?>
 
-    <form method="POST" action="index.php?rota=login">
+    <form action="routes.php?rota=login" method="POST">
         <label>Email:</label><br>
         <input type="email" name="email" required><br><br>
 
@@ -23,4 +23,3 @@
     </form>
 </body>
 </html>
-        

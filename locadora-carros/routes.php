@@ -8,7 +8,19 @@ switch ($rota) {
         $controller = new UsuarioController();
         $controller->login();
         break;
-    
+
+    case 'listar_carros':
+        require_once 'controllers/CarroController.php';
+        $controller = new CarroController();
+        $controller->listarCarros();
+        break;
+
+    case 'reservar':
+         require_once 'controllers/CarroController.php';
+         $controller = new CarroController();
+         $controller->reservar();
+         break;
+
     case 'logout':
         require_once 'controllers/UsuarioController.php';
         $controller = new UsuarioController();
@@ -19,4 +31,6 @@ switch ($rota) {
         echo "Rota não encontrada.";
         break;
 }
-    
+
+
+?>
