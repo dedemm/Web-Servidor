@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Login - Locadora</title>
-    <link rel="stylesheet" href="public/css/estilo.css">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 </head>
 <body>
     <h2>Login</h2>

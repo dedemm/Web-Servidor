@@ -1,5 +1,5 @@
 <h1>Lista de Carros</h1>
-
+<link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 <table border="1" cellpadding="10">
     <tr>
         <th>Modelo</th>

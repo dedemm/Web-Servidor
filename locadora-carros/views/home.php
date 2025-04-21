@@ -17,6 +17,7 @@ if (!isset($_SESSION['usuario'])) {
 <head>
     <title>Locadora de Carros - Home</title>
     <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 </head>
 <body>
     <h1>Bem-vindo, <?php echo $_SESSION['usuario']; ?>!</h1>
