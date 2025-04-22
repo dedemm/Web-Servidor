@@ -32,5 +32,4 @@ switch ($rota) {
         break;
 }
 
-
 ?>

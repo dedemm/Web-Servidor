@@ -4,7 +4,6 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-
 class CarroController {
 
     public function listarCarros() {
@@ -12,13 +11,12 @@ class CarroController {
         include(__DIR__ . '/../views/listarcarros.php');
     }
     
-
     public function reservar() {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $placa = $_POST['placa'];
             $data = $_POST['data'];
     
-            // Aqui estamos simulando o salvamento em sessão
+
             $_SESSION['reservas'][] = [
                 'usuario' => $_SESSION['usuario'],
                 'placa' => $placa,
@@ -33,6 +31,6 @@ class CarroController {
         }
     }
     
-
 }
+
 ?>

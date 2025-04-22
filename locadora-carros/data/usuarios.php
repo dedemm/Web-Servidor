@@ -1,6 +1,8 @@
 <?php
 
 return [
-    'joao@example.com' => '123456',
-    'maria@example.com' => 'abcdef'
+    'joao@gmail.com' => '123456',
+    'maria@gmail.com' => 'abcdef'
 ];
+
+?>

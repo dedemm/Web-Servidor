@@ -2,7 +2,7 @@
 
 class UsuarioController {
 
-    public function login(){// processa o login
+    public function login() {
 
         if($_SERVER['REQUEST_METHOD'] == "POST"){
             $email = $_POST['email'];
@@ -30,22 +30,10 @@ class UsuarioController {
 
         public function logout() {
             session_start();
-            session_destroy(); // Destroi a sessão
-            header('Location: login.php'); // Redireciona para a tela de login
+            session_destroy(); 
+            header('Location: login.php'); 
             exit();
         }
  }
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>

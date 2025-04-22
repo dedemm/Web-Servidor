@@ -1,3 +1,16 @@
+<?php
+
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Verifica se o usuário está logado
+if (!isset($_SESSION['usuario'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+
 <h1>Lista de Carros</h1>
 <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 <table border="1" cellpadding="10">
