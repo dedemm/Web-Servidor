@@ -4,14 +4,21 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-// Verifica se o usuário está logado
 if (!isset($_SESSION['usuario'])) {
     header('Location: login.php');
     exit();
 }
 ?>
 
-<h1>Lista de Carros</h1>
+<?php if (isset($_SESSION['mensagem'])): ?>
+    <div class="mensagem <?= $_SESSION['mensagem']['tipo'] ?>">
+        <?= htmlspecialchars($_SESSION['mensagem']['texto']) ?>
+    </div>
+    <?php unset($_SESSION['mensagem']); ?>
+<?php endif; ?>
+
+
+<h1>Lista de Carros Disponíveis</h1>
 <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 <table border="1" cellpadding="10">
     <tr>
@@ -29,8 +36,9 @@ if (!isset($_SESSION['usuario'])) {
             <td>
                 <form method="POST" action="routes.php?rota=reservar">
                     <input type="hidden" name="placa" value="<?= $carro['placa'] ?>">
-                    <input type="hidden" name="data" value="<?= date('Y-m-d') ?>">
-                    <button type="submit">Reservar este</button>
+                    <label for="data_<?= $carro['placa'] ?>">Data:</label>
+                    <input type="date" id="data_<?= $carro['placa'] ?>" name="data" required>
+                    <button type="submit">Reservar</button>
                 </form>
             </td>
         </tr>
@@ -39,5 +47,5 @@ if (!isset($_SESSION['usuario'])) {
 <br>
 
 <form action="index.php" method="get" style="margin-bottom: 15px;">
-    <button type="submit">🏠 Voltar para página inicial</button>
+    <button type="submit">Voltar para página inicial</button>
 </form>

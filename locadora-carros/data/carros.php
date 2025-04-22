@@ -22,10 +22,10 @@ return [
         'cor' => 'Vermelho',
         'disp'=> 'sim'
     ],
-    ['modelo' => 'Fiat Argo',
-        'placa' => 'JJC-1234',
-        'ano' => 2019,
-        'cor' => 'Vermelho',
+    ['modelo' => 'Chevrolet Onix',
+        'placa' => 'ZZA-1235',
+        'ano' => 2021,
+        'cor' => 'Vinho',
         'disp'=> 'sim'
     ]
 ];

@@ -14,16 +14,15 @@ if (!isset($_SESSION['usuario'])) {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Locadora de Carros - Home</title>
+    <title>Home</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 </head>
 <body>
-    <h1>Bem-vindo, <?php echo $_SESSION['usuario']; ?>!</h1>
-    <p>Você está logado na Locadora de Carros.</p>
+    <h1>Bem-vindo a nossa Locadora de Carros, <?php echo $_SESSION['usuario']; ?>!</h1>
 
     <ul>
-        <li><a href="">Minhas reservas</a></li>
+        <li><a href="routes.php?rota=listar_reservas">Minhas reservas</a></li>
         <li><a href="routes.php?rota=listar_carros">Carros</a></li>
 
     </ul>

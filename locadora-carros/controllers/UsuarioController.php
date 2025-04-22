@@ -34,6 +34,30 @@ class UsuarioController {
             header('Location: login.php'); 
             exit();
         }
+
+        public function cadastrar() {
+            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+                $email = $_POST['email'];
+                $senha = $_POST['senha'];
+        
+                $usuarios = include(__DIR__ . '/../data/usuarios.php');
+        
+                if (isset($usuarios[$email])) {
+                    $erro = "Usuário já existe.";
+                    include(__DIR__ . '/../views/cadastro.php');
+                } else {
+                    $usuarios[$email] = $senha;
+                    file_put_contents(__DIR__ . '/../data/usuarios.php', '<?php return ' . var_export($usuarios, true) . ';');
+        
+                    $_SESSION['usuario'] = $email;
+                    header('Location: index.php');
+                    exit();
+                }
+            } else {
+                include(__DIR__ . '/../views/cadastro.php');
+            }
+        }
+        
  }
 
 ?>
