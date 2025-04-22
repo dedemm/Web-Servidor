@@ -5,9 +5,7 @@ Repositório para o Projeto 1 da discplina Web Servidor
 Membros da equipe:
 
 André Luiz Milek Magnani;
-
 José Ricardo Schmitz Baptista;
-
 Thiago Moura Almeida;
 
 Trabalho 1: Consiste de uma aplicação em PHP 8+ que faça o uso de Formulários e envio de dados ao servidor, incluindo validações e tratamento de erros no lado do servidor (em PHP). Além disso, deve ser incluída nesta primeira parte uma estrutura para separação da Lógica (Controller e Models) e do HTML (e.g. padrão MVC) e incluir um mecanismo de Autenticação para os usuários (preferencialmente, utilizando Sessão).
