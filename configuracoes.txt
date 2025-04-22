@@ -1,0 +1,5 @@
+Para utilizar esse software, é necessário ter o xampp instalado e iniciar o apache.
+
+Após iniciar o apache, é necessário realizar o download do arquivo do projeto pelo github.
+Após o download, você entra nessa pasta: "C:\xampp\htdocs" e salva o arquivo do projeto nela.
+Para finalizar, você deve entrar no google e pesquisar por esse site http://localhost/locadora-carros/index.php

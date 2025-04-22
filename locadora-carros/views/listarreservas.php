@@ -42,7 +42,7 @@ if (count($minhasReservas) > 0): ?>
         <?php endforeach; ?>
     </table>
 <?php else: ?>
-    <p>Você ainda não fez nenhuma reserva.</p>
+    <p>Você ainda não possui nenhuma reserva.</p>
 <?php endif; ?>
 
 <br>
