@@ -15,11 +15,11 @@ switch ($rota) {
         $controller->listarCarros();
         break;
 
-        case 'listar_reservas':
-            require_once 'controllers/CarroController.php';
-            $controller = new CarroController();
-            $controller->listarReservas();
-            break;
+    case 'listar_reservas':
+        require_once 'controllers/CarroController.php';
+        $controller = new CarroController();
+        $controller->listarReservas();
+        break;
 
     case 'reservar':
          require_once 'controllers/CarroController.php';
@@ -37,6 +37,12 @@ switch ($rota) {
         require_once 'controllers/UsuarioController.php';
         $controller = new UsuarioController();
         $controller->cadastrar();
+        break;
+
+    case 'cadastrar_carro':
+        require_once 'controllers/CarroController.php';
+        $controller = new CarroController();
+        $controller->cadastrar_carro();
         break;
         
     default:

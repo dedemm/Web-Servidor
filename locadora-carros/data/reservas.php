@@ -18,5 +18,23 @@ return array (
     'placa' => 'DEF-1234',
     'data' => '2025-04-30',
   ),
+  3 => 
+  array (
+    'usuario' => 'joao@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2025-06-15',
+  ),
+  4 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2025-04-24',
+  ),
+  5 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'JJC-1234',
+    'data' => '2025-04-29',
+  ),
 );
 ?>

@@ -19,6 +19,12 @@
         <label>Senha:</label><br>
         <input type="password" name="senha" required><br><br>
 
+        <label>Função:</label><br>
+        <select id="funcao" name="funcao" required>
+            <option value="normal">Normal</option>
+            <option value="admin">Admin</option>
+        </select><br><br>
+
         <button type="submit">Cadastrar</button>
     </form>
 

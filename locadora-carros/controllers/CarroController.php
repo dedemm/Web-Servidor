@@ -48,6 +48,46 @@ class CarroController {
             echo "<p>Requisição inválida.</p>";
         }
     }
+
+    public function cadastrar_carro() {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    
+            $modelo = $_POST['modelo'];
+            $ano = $_POST['ano'];
+            $cor = $_POST['cor'];
+            $placa = $_POST['placa'];
+    
+            $carros = include(__DIR__ . '/../data/carros.php');
+    
+            foreach ($carros as $carro) {
+                if ($carro['placa'] === $placa) {
+                    $_SESSION['mensagem'] = [
+                        'tipo' => 'erro',
+                        'texto' => 'Já existe um carro com essa placa cadastrado .'
+                    ];
+                    header('Location: routes.php?rota=cadastrar_carro');
+                    exit();
+                }
+            }
+    
+            $carros[] = [
+                'modelo' => $modelo,
+                'ano' => (int)$ano,
+                'cor' => $cor,
+                'placa' => $placa,
+                'disp' => 'sim'
+            ];
+    
+            file_put_contents(__DIR__ . '/../data/carros.php', '<?php return ' . var_export($carros, true) . ';');
+    
+            header('Location: routes.php?rota=listar_carros');
+            exit();
+        } else {
+            include(__DIR__ . '/../views/cadastrocarros.php');
+        }
+    }
+    
+    
     
     
 }

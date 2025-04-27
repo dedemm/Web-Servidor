@@ -23,6 +23,7 @@ if (!isset($_SESSION['usuario'])) {
     <ul>
         <li><a href="routes.php?rota=listar_reservas">Minhas reservas</a></li>
         <li><a href="routes.php?rota=listar_carros">Carros</a></li>
+        <li><a href="routes.php?rota=cadastrar_carro">Cadastrar Carro</a></li>
 
     </ul>
     <p><a href="index.php?logout=1">Sair</a></p>
