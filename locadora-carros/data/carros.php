@@ -39,4 +39,12 @@
     'placa' => 'TES-1234',
     'disp' => 'sim',
   ),
+  5 => 
+  array (
+    'modelo' => 'Fiat 147',
+    'ano' => 2020,
+    'cor' => 'azul',
+    'placa' => 'abc 12345',
+    'disp' => 'sim',
+  ),
 );

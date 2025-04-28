@@ -36,5 +36,41 @@ return array (
     'placa' => 'JJC-1234',
     'data' => '2025-04-29',
   ),
+  6 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'DEF-1234',
+    'data' => '2025-08-20',
+  ),
+  7 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2025-08-20',
+  ),
+  8 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2025-08-10',
+  ),
+  9 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2026-08-10',
+  ),
+  10 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2025-08-08',
+  ),
+  11 => 
+  array (
+    'usuario' => 'thiago@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2028-08-10',
+  ),
 );
 ?>

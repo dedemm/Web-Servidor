@@ -27,7 +27,8 @@ class CarroController {
     
             foreach ($reservas as $reserva) {
                 if ($reserva['placa'] === $placa && $reserva['data'] === $data) {
-                    echo "<p>Este carro já está reservado para o dia <strong>$data</strong>.</p>";
+                    echo "<script>alert('Este carro já está reservado para o dia $data.'); window.location.href='routes.php?rota=listar_carros';</script>";
+
                     echo "<a href='routes.php?rota=listar_carros'>Voltar à lista de carros</a>";
                     return;
                 }
@@ -42,7 +43,9 @@ class CarroController {
             $conteudo = "<?php\nreturn " . var_export($reservas, true) . ";\n?>";
             file_put_contents($caminhoReservas, $conteudo);
     
-            echo "<p>Carro com placa <strong>$placa</strong> reservado para o dia <strong>$data</strong>!</p>";
+            echo "<script>alert('Carro reservado com sucesso para o dia $data!'); window.location.href='routes.php?rota=listar_carros';</script>";
+
+
             echo "<a href='routes.php?rota=listar_carros'>Voltar à lista de carros</a>";
         } else {
             echo "<p>Requisição inválida.</p>";
