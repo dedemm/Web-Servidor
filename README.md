@@ -1,27 +1,40 @@
 # Web-Servidor
 
-Repositório para o Projeto 1 da discplina Web Servidor
+Repositório referente ao Projeto 1 da discplina Web Servidor utilizando PHP
 
 Membros da equipe:
 
 André Luiz Milek Magnani;
-José Ricardo Schmitz Baptista;
+☑ Criar cadastro de usuários
+☑ Alterar array de usuários para ele ter função
+☑ Criar cadastro de avião
+☑ Salvar reserva realizada em array e mostrar reservas do user logado na aba de listar reservas
+
 Thiago Moura Almeida;
+☑ Criar login de usuários
+☑ Criar página de listagem de carros
+☑ Criar base do código seguindo o modelo mvc
+☑ Criar notificação de reserva
 
-Trabalho 1: Consiste de uma aplicação em PHP 8+ que faça o uso de Formulários e envio de dados ao servidor, incluindo validações e tratamento de erros no lado do servidor (em PHP). Além disso, deve ser incluída nesta primeira parte uma estrutura para separação da Lógica (Controller e Models) e do HTML (e.g. padrão MVC) e incluir um mecanismo de Autenticação para os usuários (preferencialmente, utilizando Sessão).
+José Ricardo Schmitz Baptista;
+☑ Criar validação de cadastro de carros
+☑ Verificar formatação do código
 
-2.1. Requisitos Obrigatórios Os seguintes requisitos são obrigatórios para o Trabalho 1:
+Instalação e uso do projeto
 
-PHP 8+;
+Ferramentas necessárias
+PHP 8+
+Xampp
 
-Documentação de configuração e instalação do software: este documento deve mostrar os requisitos para instalação, quais arquivos de configuração devem ser atualizados.
+Para utilizar esse software, é necessário ter o xampp instalado e iniciar o apache.
 
-Uso de um padrão para estruturar o código: este padrão deve ser utilizado para separar a lógica (validações, controle, etc.) e o HTML (apenas apresentação do conteúdo).
+Após iniciar o apache, é necessário realizar o download do arquivo do projeto pelo github https://github.com/dedemm/Web-Servidor.
 
-Uso de formulários e envio de requisições do cliente para processamento no servidor, com validações para prevenção de erros (no PHP, não no HTML);
+Após o download, você entra na pasta: "C:\xampp\htdocs" para salvar o arquivo do projeto nela.
 
-Autenticação: deve ser criado um controle de login para acesso à áreas protegidas do app;
+Para finalizar, você deve entrar no google e pesquisar por esse site http://localhost/locadora-carros/index.php
 
-Interface adequada: o aplicativo web deve prover uma interface adequada, com mensagens de feedback e erros (tratamento deve ser também no lado do servidor).
 
-Conter pelo menos 3 telas com formulários distintos de cadastro/edição diferentes e listas ou tabelas para listagem de dados.
+
+
+
