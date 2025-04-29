@@ -30,9 +30,9 @@ José Ricardo Schmitz Baptista;
 
 ☑ Verificar formatação do código
 
-Instalação e uso do projeto
+# **Instalação e uso do projeto**
 
-Ferramentas necessárias
+**Ferramentas necessárias**
 PHP 8+
 Xampp
 

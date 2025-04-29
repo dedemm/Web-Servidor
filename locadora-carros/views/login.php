@@ -14,10 +14,10 @@
 
     <form action="routes.php?rota=login" method="POST">
         <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+        <input type="email" name="email" autocomplete="off" required><br><br>
 
         <label>Senha:</label><br>
-        <input type="password" name="senha" required><br><br>
+        <input type="password" name="senha" autocomplete="new-password" required><br><br>
 
         <button type="submit">Entrar</button>
     </form>

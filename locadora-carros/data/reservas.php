@@ -78,5 +78,11 @@ return array (
     'placa' => 'FAS-1221',
     'data' => '2002-01-11',
   ),
+  13 => 
+  array (
+    'usuario' => 'web@gmail.com',
+    'placa' => 'ABC-1234',
+    'data' => '2025-04-30',
+  ),
 );
 ?>

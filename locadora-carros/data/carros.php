@@ -47,20 +47,4 @@
     'placa' => 'abc 12345',
     'disp' => 'sim',
   ),
-  6 => 
-  array (
-    'modelo' => 'teste',
-    'ano' => 2021,
-    'cor' => 'Amarelo',
-    'placa' => 'ABC-12345',
-    'disp' => 'sim',
-  ),
-  7 => 
-  array (
-    'modelo' => 'CARRO ADM',
-    'ano' => 2020,
-    'cor' => 'AZUL',
-    'placa' => 'FAS-1221',
-    'disp' => 'sim',
-  ),
 );

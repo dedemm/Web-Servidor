@@ -57,7 +57,7 @@ class UsuarioController {
         
                     $_SESSION['usuario'] = $email;
                     $_SESSION['funcao'] = $funcao;
-                    header('Location: index.php');
+                    header('Location: routes.php?rota=login');
                     exit();
                 }
             } else {

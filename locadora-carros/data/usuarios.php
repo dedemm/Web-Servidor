@@ -39,4 +39,14 @@
     'senha' => '12345',
     'funcao' => 'normal',
   ),
+  'web@gmail.com' => 
+  array (
+    'senha' => 'web',
+    'funcao' => 'normal',
+  ),
+  'admin@gmail.com' => 
+  array (
+    'senha' => 'adm',
+    'funcao' => 'admin',
+  ),
 );

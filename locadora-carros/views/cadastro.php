@@ -14,10 +14,10 @@
 
     <form action="routes.php?rota=cadastrar" method="POST">
         <label>Email:</label><br>
-        <input type="email" name="email" required><br><br>
+        <input type="email" name="email" autocomplete="off" required><br><br>
 
         <label>Senha:</label><br>
-        <input type="password" name="senha" required><br><br>
+        <input type="password" name="senha" autocomplete="new-password" required><br><br>
 
         <label>Função:</label><br>
         <select id="funcao" name="funcao" required>
