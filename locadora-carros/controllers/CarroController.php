@@ -53,6 +53,16 @@ class CarroController {
     }
 
     public function cadastrar_carro() {
+
+        if ($_SESSION['funcao'] !== 'admin') {
+            $_SESSION['mensagem'] = [
+                'tipo' => 'erro',
+                'texto' => 'Acesso negado. Apenas administradores podem cadastrar carros.'
+            ];
+            header('Location: index.php'); 
+            exit();
+        }
+
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     
             $modelo = $_POST['modelo'];
@@ -66,7 +76,7 @@ class CarroController {
                 if ($carro['placa'] === $placa) {
                     $_SESSION['mensagem'] = [
                         'tipo' => 'erro',
-                        'texto' => 'Já existe um carro com essa placa cadastrado .'
+                        'texto' => 'Já existe um carro com essa placa cadastrada.'
                     ];
                     header('Location: routes.php?rota=cadastrar_carro');
                     exit();
@@ -89,9 +99,6 @@ class CarroController {
             include(__DIR__ . '/../views/cadastrocarros.php');
         }
     }
-    
-    
-    
     
 }
 

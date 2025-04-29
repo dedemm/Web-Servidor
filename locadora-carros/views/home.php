@@ -25,7 +25,18 @@ if (!isset($_SESSION['usuario'])) {
         <li><a href="routes.php?rota=listar_carros">Carros</a></li>
         <li><a href="routes.php?rota=cadastrar_carro">Cadastrar Carro</a></li>
 
+        <?php
+        if (isset($_SESSION['mensagem'])) {
+            $tipo = $_SESSION['mensagem']['tipo']; 
+            $texto = $_SESSION['mensagem']['texto'];
+        
+            echo "<div class='mensagem'>$texto</div>";
+        
+            unset($_SESSION['mensagem']);
+        } ?>
+
     </ul>
+    <p></p>
     <p><a href="index.php?logout=1">Sair</a></p>
 </body>
 </html>
