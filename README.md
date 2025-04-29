@@ -33,7 +33,9 @@ José Ricardo Schmitz Baptista;
 # **Instalação e uso do projeto**
 
 **Ferramentas necessárias**
+
 PHP 8+
+
 Xampp
 
 Para utilizar esse software, é necessário ter o xampp instalado e iniciar o apache.
