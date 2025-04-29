@@ -6,18 +6,25 @@ Membros da equipe:
 
 André Luiz Milek Magnani;
 ☑ Criar cadastro de usuários
+
 ☑ Alterar array de usuários para ele ter função
+
 ☑ Criar cadastro de avião
+
 ☑ Salvar reserva realizada em array e mostrar reservas do user logado na aba de listar reservas
 
 Thiago Moura Almeida;
 ☑ Criar login de usuários
+
 ☑ Criar página de listagem de carros
+
 ☑ Criar base do código seguindo o modelo mvc
+
 ☑ Criar notificação de reserva
 
 José Ricardo Schmitz Baptista;
 ☑ Criar validação de cadastro de carros
+
 ☑ Verificar formatação do código
 
 Instalação e uso do projeto
