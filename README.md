@@ -44,7 +44,7 @@ Após iniciar o apache, é necessário realizar o download do arquivo do projeto
 
 Após o download, você entra na pasta: "C:\xampp\htdocs" para salvar o arquivo do projeto nela.
 
-Para finalizar, você deve entrar no google e pesquisar por esse site http://localhost/locadora-carros/index.php
+Para finalizar, você deve entrar no google e pesquisar por esse site http://localhost/Web-Servidor/locadora-carros/index.php
 
 
 
