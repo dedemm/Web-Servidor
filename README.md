@@ -5,6 +5,7 @@ Repositório referente ao Projeto 1 da discplina Web Servidor utilizando PHP
 Membros da equipe:
 
 André Luiz Milek Magnani;
+
 ☑ Criar cadastro de usuários
 
 ☑ Alterar array de usuários para ele ter função
@@ -14,6 +15,7 @@ André Luiz Milek Magnani;
 ☑ Salvar reserva realizada em array e mostrar reservas do user logado na aba de listar reservas
 
 Thiago Moura Almeida;
+
 ☑ Criar login de usuários
 
 ☑ Criar página de listagem de carros
@@ -23,6 +25,7 @@ Thiago Moura Almeida;
 ☑ Criar notificação de reserva
 
 José Ricardo Schmitz Baptista;
+
 ☑ Criar validação de cadastro de carros
 
 ☑ Verificar formatação do código
