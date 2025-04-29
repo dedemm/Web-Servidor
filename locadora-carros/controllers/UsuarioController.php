@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 class UsuarioController {
 
     public function login() {
@@ -16,7 +18,7 @@ class UsuarioController {
                 $_SESSION['usuario'] = $email;
                 $_SESSION['funcao'] = $usuarios[$email]['funcao'];
 
-                header('Location: index.php');
+                header('Location: /home');
                 exit();
 
             }else{
@@ -32,7 +34,7 @@ class UsuarioController {
         public function logout() {
             session_start();
             session_destroy(); 
-            header('Location: login.php'); 
+            header('Location: /login'); 
             exit();
         }
 
@@ -57,7 +59,7 @@ class UsuarioController {
         
                     $_SESSION['usuario'] = $email;
                     $_SESSION['funcao'] = $funcao;
-                    header('Location: routes.php?rota=login');
+                    header('Location: /login');
                     exit();
                 }
             } else {

@@ -49,4 +49,9 @@
     'senha' => 'adm',
     'funcao' => 'admin',
   ),
+  'rota@gmail.com' => 
+  array (
+    'senha' => 'rota',
+    'funcao' => 'normal',
+  ),
 );

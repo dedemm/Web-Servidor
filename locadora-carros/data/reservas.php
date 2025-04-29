@@ -84,5 +84,11 @@ return array (
     'placa' => 'ABC-1234',
     'data' => '2025-04-30',
   ),
+  14 => 
+  array (
+    'usuario' => 'rota@gmail.com',
+    'placa' => 'ZZA-1235',
+    'data' => '2025-05-01',
+  ),
 );
 ?>

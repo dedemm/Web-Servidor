@@ -14,7 +14,7 @@ if (!isset($_SESSION['usuario'])) {
 <h1>Cadastrar Carro</h1>
 <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 
-<form method="POST" action="routes.php?rota=cadastrar_carro">
+<form method="POST" action="/cadastrar_carro">
     <label>Modelo:</label><br>
     <input type="text" name="modelo" required><br><br>
 
@@ -42,6 +42,6 @@ if (!isset($_SESSION['usuario'])) {
 </form>
 
 <br>
-<form action="index.php" method="get">
+<form action="/home" method="get">
     <button type="submit">Voltar</button>
 </form>

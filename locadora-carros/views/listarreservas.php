@@ -3,7 +3,7 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 if (!isset($_SESSION['usuario'])) {
-    header('Location: login.php');
+    header('Location: /login');
     exit();
 }
 
@@ -46,6 +46,6 @@ if (count($minhasReservas) > 0): ?>
 <?php endif; ?>
 
 <br>
-<form action="index.php" method="get" style="margin-bottom: 15px;">
+<form action="/home" method="get" style="margin-bottom: 15px;">
     <button type="submit">Voltar para página inicial</button>
 </form>

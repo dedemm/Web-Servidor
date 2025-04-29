@@ -1,5 +1,7 @@
 <?php
 
+require 'vendor/autoload.php';
+
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -27,9 +29,9 @@ class CarroController {
     
             foreach ($reservas as $reserva) {
                 if ($reserva['placa'] === $placa && $reserva['data'] === $data) {
-                    echo "<script>alert('Este carro já está reservado para o dia $data.'); window.location.href='routes.php?rota=listar_carros';</script>";
+                    echo "<script>alert('Este carro já está reservado para o dia $data.'); window.location.href='/listar_carros';</script>";
 
-                    echo "<a href='routes.php?rota=listar_carros'>Voltar à lista de carros</a>";
+                    echo "<a href='/listar_carros'>Voltar à lista de carros</a>";
                     return;
                 }
             }
@@ -43,10 +45,10 @@ class CarroController {
             $conteudo = "<?php\nreturn " . var_export($reservas, true) . ";\n?>";
             file_put_contents($caminhoReservas, $conteudo);
     
-            echo "<script>alert('Carro reservado com sucesso para o dia $data!'); window.location.href='routes.php?rota=listar_carros';</script>";
+            echo "<script>alert('Carro reservado com sucesso para o dia $data!'); window.location.href='/listar_carros';</script>";
 
 
-            echo "<a href='routes.php?rota=listar_carros'>Voltar à lista de carros</a>";
+            echo "<a href='/listar_carros'>Voltar à lista de carros</a>";
         } else {
             echo "<p>Requisição inválida.</p>";
         }
@@ -59,7 +61,7 @@ class CarroController {
                 'tipo' => 'erro',
                 'texto' => 'Acesso negado. Apenas administradores podem cadastrar carros.'
             ];
-            header('Location: index.php'); 
+            header('Location: /home'); 
             exit();
         }
 
@@ -78,7 +80,7 @@ class CarroController {
                         'tipo' => 'erro',
                         'texto' => 'Já existe um carro com essa placa cadastrada.'
                     ];
-                    header('Location: routes.php?rota=cadastrar_carro');
+                    header('Location: /cadastrar_carro');
                     exit();
                 }
             }
@@ -93,7 +95,7 @@ class CarroController {
     
             file_put_contents(__DIR__ . '/../data/carros.php', '<?php return ' . var_export($carros, true) . ';');
     
-            header('Location: routes.php?rota=listar_carros');
+            header('Location: /listar_carros');
             exit();
         } else {
             include(__DIR__ . '/../views/cadastrocarros.php');
