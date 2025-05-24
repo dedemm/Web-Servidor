@@ -1,5 +1,5 @@
 {
-    "name": "locadora-carros",
+    "name": "locadora-carros/app",
     "description": "A car rental web application.",
     "type": "project",
     "autoload": {
