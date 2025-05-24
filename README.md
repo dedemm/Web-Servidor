@@ -36,15 +36,15 @@ José Ricardo Schmitz Baptista;
 
 PHP 8+
 
-Xampp
 
-Para utilizar esse software, é necessário ter o xampp instalado e iniciar o apache.
-
-Após iniciar o apache, é necessário realizar o download do arquivo do projeto pelo github https://github.com/dedemm/Web-Servidor.
+Para utilizar esse software, é  necessário realizar o download do arquivo do projeto pelo github https://github.com/dedemm/Web-Servidor.
 
 Após o download, você entra na pasta: "C:\xampp\htdocs" para salvar o arquivo do projeto nela.
 
-Para finalizar, você deve entrar no google e pesquisar por esse site http://localhost/locadora-carros/index.php
+Iniciando PHP
+  Usar esse comando no terminal da pasta raiz do projeto para iniciar servidor do PHP rodando em localhost na porta 8080
+
+  php -S localhost:8080
 
 
 
