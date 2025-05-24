@@ -10,9 +10,11 @@ André Luiz Milek Magnani;
 
 ☑ Alterar array de usuários para ele ter função
 
-☑ Criar cadastro de avião
+☑ Criar cadastro de carro
 
 ☑ Salvar reserva realizada em array e mostrar reservas do user logado na aba de listar reservas
+
+☑ Adicionado composer com autoload e pacote simplerouter para configurar rotas transparentes
 
 Thiago Moura Almeida;
 
