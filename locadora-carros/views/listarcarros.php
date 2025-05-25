@@ -28,21 +28,22 @@ if (!isset($_SESSION['usuario'])) {
         <th>Ação</th>
     </tr>
 
-    <?php foreach ($carros as $carro): ?>
-        <tr>
-            <td><?= $carro['modelo'] ?></td>
-            <td><?= $carro['ano'] ?></td>
-            <td><?= $carro['cor'] ?></td>
-            <td>
-                <form method="POST" action="routes.php?rota=reservar">
-                    <input type="hidden" name="placa" value="<?= $carro['placa'] ?>">
-                    <label for="data_<?= $carro['placa'] ?>">Data:</label>
-                    <input type="date" id="data_<?= $carro['placa'] ?>" name="data" required>
-                    <button type="submit">Reservar</button>
-                </form>
-            </td>
-        </tr>
-    <?php endforeach; ?>
+   <?php foreach ($carros as $carro): ?>
+    <tr>
+        <td><?= $carro->modelo ?></td>
+        <td><?= $carro->ano ?></td>
+        <td><?= $carro->cor ?></td>
+        <td>
+            <form method="POST" action="routes.php?rota=reservar">
+                <input type="hidden" name="placa" value="<?= $carro->placa ?>">
+                <label for="data_<?= $carro->placa ?>">Data:</label>
+                <input type="date" id="data_<?= $carro->placa ?>" name="data" required>
+                <button type="submit">Reservar</button>
+            </form>
+        </td>
+    </tr>
+<?php endforeach; ?>
+
 </table>
 <br>
 

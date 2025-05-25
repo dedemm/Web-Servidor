@@ -1,3 +1,4 @@
+
 <?php
 
 if (session_status() == PHP_SESSION_NONE) {
@@ -21,8 +22,8 @@ if (!isset($_SESSION['usuario'])) {
     <h1>Bem-vindo a nossa Locadora de Carros, <?php echo $_SESSION['usuario']; ?>!</h1>
 
     <ul>
-        <li><a href="routes.php?rota=listar_reservas">Minhas reservas</a></li>
-        <li><a href="routes.php?rota=listar_carros">Carros</a></li>
+        <li><a href="routes.php?rota=minhas_reservas">Minhas Reservas</a></li>
+         <li><a href="routes.php?rota=listar_carros">Carros</a></li>
         <li><a href="routes.php?rota=cadastrar_carro">Cadastrar Carro</a></li>
 
         <?php

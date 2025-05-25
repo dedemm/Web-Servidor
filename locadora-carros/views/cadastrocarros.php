@@ -8,7 +8,6 @@ if (!isset($_SESSION['usuario'])) {
     header('Location: login.php');
     exit();
 }
-
 ?>
 
 <h1>Cadastrar Carro</h1>
@@ -26,17 +25,6 @@ if (!isset($_SESSION['usuario'])) {
 
     <label>Cor:</label><br>
     <input type="text" name="cor" required><br><br>
-
-    <?php
-        if (isset($_SESSION['mensagem'])) {
-            $tipo = $_SESSION['mensagem']['tipo']; 
-            $texto = $_SESSION['mensagem']['texto'];
-        
-            echo "<div class='mensagem'>$texto</div>";
-        
-            unset($_SESSION['mensagem']);
-            
-        } ?>
 
     <button type="submit">Salvar Carro</button>
 </form>

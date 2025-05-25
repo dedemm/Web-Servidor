@@ -1,23 +1,36 @@
 <?php
-if (session_status() == PHP_SESSION_NONE) {
+require_once __DIR__ . '/../database/conexao.php';
+global $bd;
+
+if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-if (!isset($_SESSION['usuario'])) {
+
+if (!isset($_SESSION['id_usuario'])) {
     header('Location: login.php');
     exit();
 }
 
-$reservas = include(__DIR__ . '/../data/reservas.php');
-$carros = include(__DIR__ . '/../data/carros.php');
+$idUsuario = $_SESSION['id_usuario'];
+
+$sql = "
+    SELECT r.placa, r.data, c.modelo, c.ano, c.cor
+    FROM reservas r
+    JOIN carros c ON r.placa = c.placa
+    WHERE r.id_usuario = ?
+";
+
+$stmt = $bd->prepare($sql);
+$stmt->bind_param("i", $idUsuario); // "i" = integer
+$stmt->execute();
+$resultado = $stmt->get_result();
+$reservas = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
 <h1>Minhas Reservas</h1>
 <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 
-<?php 
-$minhasReservas = array_filter($reservas, fn($r) => $r['usuario'] === $_SESSION['usuario']);
-
-if (count($minhasReservas) > 0): ?>
+<?php if (count($reservas) > 0): ?>
     <table border="1" cellpadding="10">
         <tr>
             <th>Placa</th>
@@ -26,17 +39,12 @@ if (count($minhasReservas) > 0): ?>
             <th>Cor</th>
             <th>Data</th>
         </tr>
-        <?php foreach ($minhasReservas as $reserva): ?>
-            <?php
-                $placa = $reserva['placa'];
-                $carro = array_filter($carros, fn($c) => $c['placa'] === $placa);
-                $carro = reset($carro);
-            ?>
+        <?php foreach ($reservas as $reserva): ?>
             <tr>
-                <td><?= htmlspecialchars($placa) ?></td>
-                <td><?= htmlspecialchars($carro['modelo'] ?? 'Desconhecido') ?></td>
-                <td><?= htmlspecialchars($carro['ano'] ?? 'Desconhecido') ?></td>
-                <td><?= htmlspecialchars($carro['cor'] ?? 'Desconhecido') ?></td>
+                <td><?= htmlspecialchars($reserva['placa']) ?></td>
+                <td><?= htmlspecialchars($reserva['modelo']) ?></td>
+                <td><?= htmlspecialchars($reserva['ano']) ?></td>
+                <td><?= htmlspecialchars($reserva['cor']) ?></td>
                 <td><?= htmlspecialchars($reserva['data']) ?></td>
             </tr>
         <?php endforeach; ?>
