@@ -12,7 +12,7 @@
         <p style="color: red;"><?php echo $erro; ?></p>
     <?php endif; ?>
 
-    <form action="routes.php?rota=cadastrar" method="POST">
+    <form action="/cadastrar" method="POST">
         <label>Email:</label><br>
         <input type="email" name="email" autocomplete="off" required><br><br>
 
@@ -28,6 +28,6 @@
         <button type="submit">Cadastrar</button>
     </form>
 
-    <p>Já possui uma conta? <a href="index.php">Faça login</a></p>
+    <p>Já possui uma conta? <a href="/login">Faça login</a></p>
 </body>
 </html>
