@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <?php
 require_once __DIR__ . '/../database/conexao.php';
 global $bd;
@@ -27,8 +28,10 @@ $resultado = $stmt->get_result();
 $reservas = $resultado->fetch_all(MYSQLI_ASSOC);
 ?>
 
+=======
+>>>>>>> Stashed changes
 <h1>Minhas Reservas</h1>
-<link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/CSS/style.css" media="screen" />
 
 <?php if (count($reservas) > 0): ?>
     <table border="1" cellpadding="10">
@@ -40,6 +43,19 @@ $reservas = $resultado->fetch_all(MYSQLI_ASSOC);
             <th>Data</th>
         </tr>
         <?php foreach ($reservas as $reserva): ?>
+<<<<<<< Updated upstream
+=======
+            <?php
+                $placa = $reserva['placa'];
+                $carro = null;
+                foreach ($carros as $c) {
+                    if ($c['placa'] === $placa) {
+                        $carro = $c;
+                        break;
+                    }
+                }
+            ?>
+>>>>>>> Stashed changes
             <tr>
                 <td><?= htmlspecialchars($reserva['placa']) ?></td>
                 <td><?= htmlspecialchars($reserva['modelo']) ?></td>
