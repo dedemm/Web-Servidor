@@ -8,9 +8,7 @@ André Luiz Milek Magnani;
 
 ☑ Criar cadastro de usuários
 
-☑ Alterar array de usuários para ele ter função
-
-☑ Criar cadastro de avião
+☑ Criar cadastro de carro
 
 ☑ Salvar reserva realizada em array e mostrar reservas do user logado na aba de listar reservas
 
