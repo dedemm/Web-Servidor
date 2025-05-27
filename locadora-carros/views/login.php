@@ -6,13 +6,14 @@
     <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 </head>
 <body>
+    <div class="container">
     <h2>Faça seu Login</h2>
 
     <?php if (!empty($erro)) : ?>
         <p style="color: red;"><?php echo $erro; ?></p>
     <?php endif; ?>
 
-    <form action="routes.php?rota=login" method="POST">
+    <form action="/login" method="POST">
         <label>Email:</label><br>
         <input type="email" name="email" autocomplete="off" required><br><br>
 
@@ -22,6 +23,7 @@
         <button type="submit">Entrar</button>
     </form>
 
-    <p>Não tem conta? <a href="routes.php?rota=cadastrar">Cadastre-se aqui</a></p>
+    <p>Não tem conta? <a href="/cadastrar">Cadastre-se aqui</a></p>
+    </div>
 </body>
 </html>

@@ -1,23 +1,7 @@
-<?php
-if (session_status() == PHP_SESSION_NONE) {
-    session_start();
-}
-if (!isset($_SESSION['usuario'])) {
-    header('Location: login.php');
-    exit();
-}
-
-$reservas = include(__DIR__ . '/../data/reservas.php');
-$carros = include(__DIR__ . '/../data/carros.php');
-?>
-
 <h1>Minhas Reservas</h1>
-<link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
+<link rel="stylesheet" type="text/css" href="/CSS/style.css" media="screen" />
 
-<?php 
-$minhasReservas = array_filter($reservas, fn($r) => $r['usuario'] === $_SESSION['usuario']);
-
-if (count($minhasReservas) > 0): ?>
+<?php if (count($reservas) > 0): ?>
     <table border="1" cellpadding="10">
         <tr>
             <th>Placa</th>
@@ -26,11 +10,16 @@ if (count($minhasReservas) > 0): ?>
             <th>Cor</th>
             <th>Data</th>
         </tr>
-        <?php foreach ($minhasReservas as $reserva): ?>
+        <?php foreach ($reservas as $reserva): ?>
             <?php
                 $placa = $reserva['placa'];
-                $carro = array_filter($carros, fn($c) => $c['placa'] === $placa);
-                $carro = reset($carro);
+                $carro = null;
+                foreach ($carros as $c) {
+                    if ($c['placa'] === $placa) {
+                        $carro = $c;
+                        break;
+                    }
+                }
             ?>
             <tr>
                 <td><?= htmlspecialchars($placa) ?></td>
@@ -46,6 +35,10 @@ if (count($minhasReservas) > 0): ?>
 <?php endif; ?>
 
 <br>
-<form action="index.php" method="get" style="margin-bottom: 15px;">
+<form action="/listar_carros" method="get" style="margin-bottom: 15px;">
+    <button type="submit">Reservar um carro</button>
+</form>
+
+<form action="/home" method="get" style="margin-bottom: 15px;">
     <button type="submit">Voltar para página inicial</button>
 </form>

@@ -1,0 +1,125 @@
+/* Reset básico */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    padding: 40px 20px;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.home-container {
+    width: 600px;
+    background-color: #fff;
+    padding: 30px 25px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    text-align: center;
+    height: 500px;
+}
+
+/* Boas-vindas */
+.welcome-card h1, .welcome-card p {
+    color: #2c3e50;
+}
+
+.welcome-card h1 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 1.8rem;
+    white-space: nowrap; /* evita quebra de linha */
+}
+
+.welcome-card span {
+    color: #27ae60;
+}
+
+.welcome-card p {
+    margin-bottom: 30px;
+    font-size: 1rem;
+}
+
+/* Menu */
+.menu {
+    list-style: none;  /* tira os bullets */
+    padding-left: 0;   /* remove o padding padrão */
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.menu li {
+    /* Nenhum estilo extra, só garantir o básico */
+}
+
+.menu li a {
+    display: inline-block;
+    padding: 12px 18px;
+    background-color: #2980b9;
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: background-color 0.3s ease;
+}
+
+.menu li a:hover,
+.menu li a:focus {
+    background-color: #1c5985;
+    outline: none;
+}
+
+/* Botão sair */
+.logout-button {
+    display: inline-block;
+    padding: 12px 25px;
+    background-color: #e74c3c;
+    color: white;
+    border-radius: 5px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.logout-button:hover,
+.logout-button:focus {
+    background-color: #c0392b;
+    outline: none;
+}
+
+/* Responsivo */
+@media (max-width: 600px) {
+    body {
+        padding: 20px 10px;
+    }
+
+    .home-container {
+        padding: 20px 15px;
+        width: 100%;
+        height: auto; /* Para melhor flexibilidade no mobile */
+    }
+
+    .menu li a {
+        padding: 10px 14px;
+        font-size: 14px;
+    }
+
+    .logout-button {
+        width: 100%;
+        padding: 12px 0;
+    }
+
+    /* Remove o white-space nowrap no h1 para permitir quebra em telas pequenas */
+    .welcome-card h1 {
+        white-space: normal;
+        font-size: 1.4rem;
+    }
+}

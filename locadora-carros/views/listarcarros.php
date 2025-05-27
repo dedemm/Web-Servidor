@@ -5,7 +5,7 @@ if (session_status() == PHP_SESSION_NONE) {
 }
 
 if (!isset($_SESSION['usuario'])) {
-    header('Location: login.php');
+    header('/login');
     exit();
 }
 ?>
@@ -34,7 +34,7 @@ if (!isset($_SESSION['usuario'])) {
             <td><?= $carro['ano'] ?></td>
             <td><?= $carro['cor'] ?></td>
             <td>
-                <form method="POST" action="routes.php?rota=reservar">
+                <form method="POST" action="/reservar">
                     <input type="hidden" name="placa" value="<?= $carro['placa'] ?>">
                     <label for="data_<?= $carro['placa'] ?>">Data:</label>
                     <input type="date" id="data_<?= $carro['placa'] ?>" name="data" required>
@@ -46,6 +46,6 @@ if (!isset($_SESSION['usuario'])) {
 </table>
 <br>
 
-<form action="index.php" method="get" style="margin-bottom: 15px;">
+<form action="/home" method="get" style="margin-bottom: 15px;">
     <button type="submit">Voltar para página inicial</button>
 </form>

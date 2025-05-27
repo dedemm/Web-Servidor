@@ -1,42 +1,43 @@
 <?php
-
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
 if (!isset($_SESSION['usuario'])) {
-    header('Location: login.php');
+    header('Location: /login');
     exit();
 }
+
+$emailCompleto = $_SESSION['usuario'];
+$usuarioExibido = explode('@', $emailCompleto)[0];
 ?>
 
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Home</title>
+    <title>Página Inicial</title>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
+    <link rel="stylesheet" type="text/css" href="CSS/stylesHome.css" media="screen" />
 </head>
 <body>
-    <h1>Bem-vindo a nossa Locadora de Carros, <?php echo $_SESSION['usuario']; ?>!</h1>
+    <div class="home-container">
+        <div class="welcome-card">
+            <h1>Bem-vindo(a), <span><?= htmlspecialchars($usuarioExibido) ?></span>!</h1>
+            <p>Aproveite os recursos da nossa locadora.</p>
+        </div>
 
-    <ul>
-        <li><a href="routes.php?rota=listar_reservas">Minhas reservas</a></li>
-        <li><a href="routes.php?rota=listar_carros">Carros</a></li>
-        <li><a href="routes.php?rota=cadastrar_carro">Cadastrar Carro</a></li>
+        <ul class="menu">
+            <li><a href="/listar_reservas">Minhas reservas</a></li>
+            <li><a href="/listar_carros">Carros</a></li>
+            <?php 
+                if ($_SESSION['funcao'] == 'admin') {
+                    echo '<li><a href="/cadastrar_carro">Cadastrar Carro</a></li>';
+                    echo '<li><a href="/gerenciar_usuarios">Gerenciar usuários</a></li>';
+                }
+            ?>
+        </ul>
 
-        <?php
-        if (isset($_SESSION['mensagem'])) {
-            $tipo = $_SESSION['mensagem']['tipo']; 
-            $texto = $_SESSION['mensagem']['texto'];
-        
-            echo "<div class='mensagem'>$texto</div>";
-        
-            unset($_SESSION['mensagem']);
-        } ?>
-
-    </ul>
-    <p></p>
-    <p><a href="index.php?logout=1">Sair</a></p>
+        <a class="logout-button" href="/logout">Sair</a>
+    </div>
 </body>
 </html>

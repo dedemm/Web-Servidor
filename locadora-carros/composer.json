@@ -1,0 +1,11 @@
+{
+    "name": "locadora-carros/app",
+    "description": "A car rental web application.",
+    "type": "project",
+    "autoload": {
+        "classmap": ["./"]
+    },
+    "require": {
+        "pecee/simple-router": "^5.4"
+    }
+}

@@ -1,70 +1,99 @@
 <?php
 
-class UsuarioController {
+require 'vendor/autoload.php';
+require_once __DIR__ . '/../models/UsuarioModel.php';
 
-    public function login() {
-
-        if($_SERVER['REQUEST_METHOD'] == "POST"){
-            $email = $_POST['email'];
-            $senha = $_POST['senha'];
-
-            $usuarios = include_once(__DIR__ . '/../data/usuarios.php');
-
-
-            if(isset($usuarios[$email]) && $usuarios[$email]['senha'] == $senha){
-                session_start();
-                $_SESSION['usuario'] = $email;
-                $_SESSION['funcao'] = $usuarios[$email]['funcao'];
-
-                header('Location: index.php');
-                exit();
-
-            }else{
-                $erro = 'Email ou senha incorretos!';
-                include(__DIR__ . '/../views/login.php');
-            }
-            }else{
-                include(__DIR__ . '/../views/login.php');
-
-            }
+class UsuarioController
+{
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->processarLogin();
+        } else {
+            $this->exibirFormularioLogin();
         }
+    }
 
-        public function logout() {
-            session_start();
-            session_destroy(); 
-            header('Location: login.php'); 
+    private function processarLogin()
+    {
+        //session_start();
+
+        $email = $_POST['email'] ?? '';
+        $senha = $_POST['senha'] ?? '';
+
+        $usuarioModel = new UsuarioModel();
+        $usuario = $usuarioModel->buscarPorEmail($email);
+
+        if ($usuario &&  $usuario->senha == $senha) {
+            $_SESSION['usuario'] = $usuario->email;
+            $_SESSION['usuario_id'] = $usuario->id;
+            $_SESSION['funcao'] = $usuario->funcao;
+
+            header('Location: /home');
             exit();
         }
 
-        public function cadastrar() {
-            if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-                session_start();
-                $email = $_POST['email'];
-                $senha = $_POST['senha'];
-                $funcao = $_POST['funcao'];
-        
-                $usuarios = include(__DIR__ . '/../data/usuarios.php');
-        
-                if (isset($usuarios[$email])) {
-                    $erro = "Usuário já existe.";
-                    include(__DIR__ . '/../views/cadastro.php');
-                } else {
-                    $usuarios[$email] = [
-                        'senha' => $senha,
-                        'funcao' => $funcao
-                    ];
-                    file_put_contents(__DIR__ . '/../data/usuarios.php', '<?php return ' . var_export($usuarios, true) . ';');
-        
-                    $_SESSION['usuario'] = $email;
-                    $_SESSION['funcao'] = $funcao;
-                    header('Location: routes.php?rota=login');
-                    exit();
-                }
-            } else {
-                include(__DIR__ . '/../views/cadastro.php');
-            }
-        }
-        
- }
+        $erro = 'Email ou senha incorretos!';
+        $this->exibirFormularioLogin($erro);
+    }
 
-?>
+    private function exibirFormularioLogin($erro = null)
+    {
+        include __DIR__ . '/../views/login.php';
+    }
+
+    public function logout()
+    {
+        session_start();
+        session_destroy();
+        header('Location: /login');
+        exit();
+    }
+
+    public function cadastrar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $this->processarCadastro();
+        } else {
+            $this->exibirFormularioCadastro();
+        }
+    }
+
+    private function processarCadastro()
+    {
+        session_start();
+
+        $email = $_POST['email'] ?? '';
+        $senha = $_POST['senha'] ?? '';
+        $funcao = $_POST['funcao'] ?? '';
+
+        $usuarioModel = new UsuarioModel();
+        if ($usuarioModel->buscarPorEmail($email)) {
+            $erro = "Usuário já existe.";
+            $this->exibirFormularioCadastro($erro);
+            return;
+        }
+
+
+        $usuarioModel->email = $email;
+        $usuarioModel->senha = $senha;
+        $usuarioModel->funcao = $funcao;
+
+        $res = $usuarioModel->cadastrar();
+
+        if ($res) {
+            $_SESSION['usuario'] = $email;
+            $_SESSION['funcao'] = $funcao;
+            header('Location: /login');
+            exit();
+        }
+
+        $erro = "Erro ao cadastrar usuário. Tente novamente.";
+        $this->exibirFormularioCadastro($erro);
+    }
+
+    private function exibirFormularioCadastro( $erro = null)
+    {
+        include __DIR__ . '/../views/cadastro.php';
+    }
+}
