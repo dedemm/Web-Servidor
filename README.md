@@ -10,9 +10,11 @@ André Luiz Milek Magnani;
 
 ☑ Criar cadastro de carro
 
-☑ Salvar reserva realizada em array e mostrar reservas do user logado na aba de listar reservas
+☑ Salvar reserva e mostrar reservas do user logado na aba de listar reservas
 
-☑ Adicionado composer com autoload e pacote simplerouter para configurar rotas transparentes
+☑ Adicionado composer com autoload
+
+☑ Adicionado pacote simplerouter e configurado rotas transparentes
 
 Thiago Moura Almeida;
 
@@ -29,8 +31,6 @@ Thiago Moura Almeida;
 José Ricardo Schmitz Baptista;
 
 ☑ Criar validação de cadastro de carros
-
-☑ Verificar formatação do código
 
 ☑ Alterado css do código
 
