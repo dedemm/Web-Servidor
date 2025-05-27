@@ -45,7 +45,9 @@ José Ricardo Schmitz Baptista;
 **Ferramentas necessárias**
 
 PHP 8+
+
 Xampp
+
 Mysql
 
 Para utilizar esse software, é necessário ter o xampp instalado e iniciar o apache e o mysql.
