@@ -16,7 +16,7 @@ class UsuarioController
 
     private function processarLogin()
     {
-        session_start();
+        //session_start();
 
         $email = $_POST['email'] ?? '';
         $senha = $_POST['senha'] ?? '';
@@ -37,7 +37,7 @@ class UsuarioController
         $this->exibirFormularioLogin($erro);
     }
 
-    private function exibirFormularioLogin(string $erro = null)
+    private function exibirFormularioLogin($erro = null)
     {
         include __DIR__ . '/../views/login.php';
     }
@@ -92,7 +92,7 @@ class UsuarioController
         $this->exibirFormularioCadastro($erro);
     }
 
-    private function exibirFormularioCadastro(string $erro = null)
+    private function exibirFormularioCadastro( $erro = null)
     {
         include __DIR__ . '/../views/cadastro.php';
     }

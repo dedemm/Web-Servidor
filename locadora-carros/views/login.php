@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 </head>
 <body>
+    <div class="container">
     <h2>Faça seu Login</h2>
 
     <?php if (!empty($erro)) : ?>
@@ -23,5 +24,6 @@
     </form>
 
     <p>Não tem conta? <a href="/cadastrar">Cadastre-se aqui</a></p>
+    </div>
 </body>
 </html>
