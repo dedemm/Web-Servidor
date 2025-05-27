@@ -1,6 +1,6 @@
 # Web-Servidor
 
-Repositório referente ao Projeto 1 da discplina Web Servidor utilizando PHP
+Repositório referente ao Projeto 1 da disciplina Web Servidor utilizando PHP
 
 Membros da equipe:
 
