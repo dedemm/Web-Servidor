@@ -61,7 +61,7 @@ class UsuarioController
 
     private function processarCadastro()
     {
-        session_start();
+       //session_start();
 
         $email = $_POST['email'] ?? '';
         $senha = $_POST['senha'] ?? '';

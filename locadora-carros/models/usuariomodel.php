@@ -35,6 +35,7 @@ class UsuarioModel {
     }
 
     public function cadastrar() {
+        $this->funcao = 'normal';
         $stmt = $this->bd->prepare("INSERT INTO usuarios (email, senha, funcao) VALUES (?, ?, ?)");
         $stmt->bind_param('sss', $this->email, $this->senha, $this->funcao);
         $res = $stmt->execute();
