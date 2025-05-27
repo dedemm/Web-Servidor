@@ -10,7 +10,7 @@ if (!isset($_SESSION['usuario'])) {
 }
 
 ?>
-
+<div class="container">
 <h1>Cadastrar Carro</h1>
 <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 
@@ -45,3 +45,4 @@ if (!isset($_SESSION['usuario'])) {
 <form action="/home" method="get">
     <button type="submit">Voltar</button>
 </form>
+</div>

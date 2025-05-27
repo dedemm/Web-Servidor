@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="CSS/style.css" media="screen" />
 </head>
 <body>
+    <div class="container">
     <h2>Cadastre-se</h2>
 
     <?php if (!empty($erro)) : ?>
@@ -19,15 +20,12 @@
         <label>Senha:</label><br>
         <input type="password" name="senha" autocomplete="new-password" required><br><br>
 
-        <label>Função:</label><br>
-        <select id="funcao" name="funcao" required>
-            <option value="normal">Normal</option>
-            <option value="admin">Admin</option>
-        </select><br><br>
+
 
         <button type="submit">Cadastrar</button>
     </form>
 
     <p>Já possui uma conta? <a href="/login">Faça login</a></p>
+    </div>
 </body>
 </html>

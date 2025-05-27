@@ -8,70 +8,106 @@ if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
 
-class CarroController {
+class CarroController
+{
+    private $carroModel;
+    private $reservaModel;
 
-    public function listarCarros() {
-        $carros = CarroModel::listarTodos();
-        include(__DIR__ . '/../views/listarcarros.php');
+    public function __construct() {
+        $this->carroModel = new CarroModel();
+        $this->reservaModel = new ReservaModel();
     }
 
-   public function listarReservas() {
-    $idUsuario = $_SESSION['usuario_id'] ?? null;
-    if (!$idUsuario) {
-        header('Location: /login');
+    public function listarCarros()
+    {
+        $carros = $this->carroModel->listarTodos();
+        include __DIR__ . '/../views/listarcarros.php';
+    }
+
+    public function listarReservas()
+    {
+        $idUsuario = $_SESSION['usuario_id'] ?? null;
+
+        if (!$idUsuario) {
+            header('Location: /login');
+            exit();
+        }
+
+        $reservas = $this->reservaModel->listarPorUsuario($idUsuario);
+        $carros = $this->carroModel->listarTodos();
+
+        include __DIR__ . '/../views/listarreservas.php';
+    }
+
+    public function reservar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+            echo "<p>Requisição inválida.</p>";
+            return;
+        }
+
+        $idUsuario = $_SESSION['usuario_id'] ?? null;
+        $placa = $_POST['placa'] ?? '';
+        $data = $_POST['data'] ?? '';
+
+        if (!$idUsuario) {
+            $_SESSION['mensagem'] = [
+                'tipo' => 'erro',
+                'texto' => 'Você precisa estar logado para reservar.'
+            ];
+            header('Location: /home');
+            exit();
+        }
+
+        if ($this->reservaModel->existeReserva($placa, $data)) {
+            $_SESSION['mensagem'] = [
+                'tipo' => 'erro',
+                'texto' => "Este carro já está reservado para o dia $data."
+            ];
+            header('Location: /listar_carros');
+            exit();
+        }
+
+        $this->reservaModel->idUsuario = $idUsuario;
+        $this->reservaModel->placa = $placa;
+        $this->reservaModel->data = $data;
+
+        $res = $this->reservaModel->cadastrar();
+
+        if ($res) {
+            $_SESSION['mensagem'] = [
+                'tipo' => 'sucesso',
+                'texto' => "Carro reservado com sucesso para o dia $data!"
+            ];
+        } else {
+            $_SESSION['mensagem'] = [
+                'tipo' => 'erro',
+                'texto' => 'Erro ao reservar o carro. Tente novamente.'
+            ];
+        }
+
+        header('Location: /listar_carros');
         exit();
     }
 
-    $reservas = ReservaModel::listarPorUsuario($idUsuario);
-    $carros = CarroModel::listarTodos();
-
-    include(__DIR__ . '/../views/listarreservas.php');
-}
-
-
-public function reservar() {
-    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-        $placa = $_POST['placa'];
-        $data = $_POST['data'];
-        $idUsuario = $_SESSION['usuario_id'] ?? null;
-        if (!$idUsuario) {
-            echo "<script>alert('Você precisa estar logado para reservar.'); window.location.href='/login';</script>";
-            return;
-        }
-
-        if (ReservaModel::existeReserva($placa, $data)) {
-            echo "<script>alert('Este carro já está reservado para o dia $data.'); window.location.href='/listar_carros';</script>";
-            return;
-        }
-
-        $res = ReservaModel::cadastrar($idUsuario, $placa, $data);
-        if ($res) {
-            echo "<script>alert('Carro reservado com sucesso para o dia $data!'); window.location.href='/listar_carros';</script>";
-        } else {
-            echo "<script>alert('Erro ao reservar o carro. Tente novamente.'); window.location.href='/listar_carros';</script>";
-        }
-    } else {
-        echo "<p>Requisição inválida.</p>";
-    }
-}
-
-    public function cadastrar_carro() {
+    public function cadastrar_carro()
+    {
         if (($_SESSION['funcao'] ?? '') !== 'admin') {
             $_SESSION['mensagem'] = [
                 'tipo' => 'erro',
                 'texto' => 'Acesso negado. Apenas administradores podem cadastrar carros.'
             ];
-            header('Location: /home'); 
+            header('Location: /home');
             exit();
         }
 
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            $modelo = $_POST['modelo'];
-            $ano = $_POST['ano'];
-            $cor = $_POST['cor'];
-            $placa = $_POST['placa'];
+            $modelo = $_POST['modelo'] ?? '';
+            $ano = (int)($_POST['ano'] ?? 0);
+            $cor = $_POST['cor'] ?? '';
+            $placa = $_POST['placa'] ?? '';
 
-            if (CarroModel::existePlaca($placa)) {
+            if ($this->carroModel->existePlaca($placa)) {
                 $_SESSION['mensagem'] = [
                     'tipo' => 'erro',
                     'texto' => 'Já existe um carro com essa placa cadastrada.'
@@ -80,7 +116,13 @@ public function reservar() {
                 exit();
             }
 
-            $res = CarroModel::cadastrar($modelo, $placa, (int)$ano, $cor);
+            $this->carroModel->modelo = $modelo;
+            $this->carroModel->placa = $placa;
+            $this->carroModel->ano = $ano;
+            $this->carroModel->cor = $cor;
+
+            $res = $this->carroModel->cadastrar();
+
             if ($res) {
                 header('Location: /listar_carros');
                 exit();
@@ -93,8 +135,7 @@ public function reservar() {
                 exit();
             }
         } else {
-            include(__DIR__ . '/../views/cadastrocarros.php');
+            include __DIR__ . '/../views/cadastrocarros.php';
         }
     }
 }
-?>

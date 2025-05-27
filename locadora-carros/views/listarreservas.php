@@ -35,6 +35,10 @@
 <?php endif; ?>
 
 <br>
+<form action="/listar_carros" method="get" style="margin-bottom: 15px;">
+    <button type="submit">Reservar um carro</button>
+</form>
+
 <form action="/home" method="get" style="margin-bottom: 15px;">
     <button type="submit">Voltar para página inicial</button>
 </form>

@@ -84,6 +84,35 @@ Router::post('/cadastrar_carro', function () {
     $controller->cadastrar_carro();
 });
 
+Router::get('/gerenciar_usuarios', function () {
+    require_once 'controllers/AdminController.php';
+    $controller = new AdminController();
+    $controller->listarUsuarios();
+});
+
+Router::get('/editar_usuario/{id}', function ($id) {
+    require_once 'controllers/AdminController.php';
+    $controller = new AdminController();
+    $controller->editarUsuarioForm($id);
+});
+
+Router::post('/editar_usuario/{id}', function ($id) {
+    require_once 'controllers/AdminController.php';
+    $controller = new AdminController();
+    $controller->editarUsuario($id);
+});
+
+Router::post('/excluir_usuario/{id}', function ($id) {
+    require_once 'controllers/AdminController.php';
+    $controller = new AdminController();
+    $controller->excluirUsuario($id);
+});
+
+
+Router::get('/not-found', function () {
+    echo '<h1>404 - Página não encontrada</h1>';
+});
+
 Router::error(function (Request $request, \Exception $exception) {
     if ($exception->getCode() === 404) {
         Router::response()->redirect('/not-found');;
@@ -94,6 +123,6 @@ Router::error(function (Request $request, \Exception $exception) {
 
 Router::start(true);
 
-echo "Router finalizado";
+
 
 ?>

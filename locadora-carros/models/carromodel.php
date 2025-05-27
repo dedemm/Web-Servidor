@@ -2,15 +2,26 @@
 require_once 'Conexao.php';
 
 class CarroModel {
-    public static function listarTodos() {
-        $conn = Conexao::getConexao();
-        $resultado = $conn->query("SELECT * FROM carros");
+    private $conn;
+
+    public $id;
+    public $modelo;
+    public $placa;
+    public $ano;
+    public $cor;
+    public $disp;
+
+    public function __construct() {
+        $this->conn = Conexao::getConexao();
+    }
+
+    public function listarTodos() {
+        $resultado = $this->conn->query("SELECT * FROM carros");
         return $resultado->fetch_all(MYSQLI_ASSOC);
     }
 
-    public static function existePlaca($placa) {
-        $conn = Conexao::getConexao();
-        $stmt = $conn->prepare("SELECT COUNT(*) FROM carros WHERE placa = ?");
+    public function existePlaca(string $placa): bool {
+        $stmt = $this->conn->prepare("SELECT COUNT(*) FROM carros WHERE placa = ?");
         $stmt->bind_param('s', $placa);
         $stmt->execute();
         $stmt->bind_result($count);
@@ -19,10 +30,9 @@ class CarroModel {
         return $count > 0;
     }
 
-    public static function cadastrar($modelo, $placa, $ano, $cor) {
-        $conn = Conexao::getConexao();
-        $stmt = $conn->prepare("INSERT INTO carros (modelo, placa, ano, cor, disp) VALUES (?, ?, ?, ?, 'sim')");
-        $stmt->bind_param('ssis', $modelo, $placa, $ano, $cor);
+    public function cadastrar(): bool {
+        $stmt = $this->conn->prepare("INSERT INTO carros (modelo, placa, ano, cor, disp) VALUES (?, ?, ?, ?, 'sim')");
+        $stmt->bind_param('ssis', $this->modelo, $this->placa, $this->ano, $this->cor);
         $res = $stmt->execute();
         $stmt->close();
         return $res;
